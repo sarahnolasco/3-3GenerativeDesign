@@ -38,24 +38,26 @@ function setup() {
   layersSlider.parent("layers-control");
   layersSlider.id("layers-slider");
 
-  // Color pickers control the two pattern colors.
+  // Default colors: yellow and gold.
   colorOnePicker = createColorPicker("#f0d169");
   colorOnePicker.parent("color-one-control");
 
   colorTwoPicker = createColorPicker("#eeb741");
   colorTwoPicker.parent("color-two-control");
 
-  // Create the required p5.js buttons.
+  // Surprise Me button.
   surpriseButton = createButton("Surprise me");
   surpriseButton.parent("surprise-row");
   surpriseButton.class("text-button");
   surpriseButton.mousePressed(surpriseMe);
 
+  // Reset button.
   sheetButton = createButton("Sheet");
   sheetButton.parent("action-row");
   sheetButton.class("text-button");
   sheetButton.mousePressed(resetSheet);
 
+  // Export button.
   saveButton = createButton("Save PNG");
   saveButton.parent("action-row");
   saveButton.class("text-button");
@@ -88,12 +90,12 @@ function draw() {
   // Keep random details consistent until a new variation is requested.
   randomSeed(variationSeed);
 
-  // Center all the artwork on the canvas.
+  // Center the artwork.
   translate(width / 2, height / 2);
 
   const outerRadius = width * 0.385 * spread;
 
-  // Fixed outer circle frames the generated pattern.
+  // Outer circle frames the design.
   noFill();
   stroke(colorOne);
   strokeWeight(1.2);
@@ -107,7 +109,7 @@ function draw() {
     const radius = outerRadius * (0.28 + layerProgress * 0.67);
     const angleStep = TWO_PI / bandCount;
 
-    // Rotate every other layer to create an interlocking effect.
+    // Rotate alternating layers.
     if (layer % 2 === 1) {
       rotate(angleStep / 2);
     }
@@ -115,7 +117,7 @@ function draw() {
     const layerColor =
       (layer % 2 === 0) ? colorOne : colorTwo;
 
-    // Repeat the ornaments around the circle.
+    // Repeat ornaments around the circle.
     for (let i = 0; i < bandCount; i++) {
       push();
 
@@ -125,7 +127,7 @@ function draw() {
       const shapeSize =
         (width * 0.045 + layer * 1.2) * sizeVariation;
 
-      // Alternate between filled diamonds and angular outlines.
+      // Alternate filled diamonds and outlined geometric shapes.
       if ((i + layer) % 2 === 0) {
         noStroke();
         fill(layerColor);
@@ -157,7 +159,7 @@ function draw() {
         endShape(CLOSE);
       }
 
-      // Add contrasting dots at alternating positions.
+      // Add contrasting dots.
       if (i % 2 === 0) {
         noStroke();
 
@@ -175,7 +177,7 @@ function draw() {
       pop();
     }
 
-    // Connecting rings unify the design.
+    // Connecting rings unify the pattern.
     noFill();
     stroke(layerColor);
     strokeWeight(max(1, thickness * 0.45));
@@ -184,7 +186,7 @@ function draw() {
     pop();
   }
 
-  // Central rosette anchors the different variations.
+  // Central rosette.
   const centerRadius = outerRadius * 0.24;
 
   noStroke();
@@ -194,7 +196,7 @@ function draw() {
   fill(255);
   circle(0, 0, centerRadius * 1.25);
 
-  // Repeated center details use the same radial system.
+  // Repeated center details.
   for (let i = 0; i < bandCount; i++) {
     push();
 
@@ -218,15 +220,15 @@ function refreshDesign() {
 }
 
 function surpriseMe() {
-  // Randomize parameters within the defined ranges.
+  // Randomize the parameters.
   bandsSlider.value(floor(random(8, 33)));
   thicknessSlider.value(floor(random(1, 11)));
   spreadSlider.value(floor(random(55, 101)));
   layersSlider.value(floor(random(2, 9)));
 
-  // A limited palette keeps all designs visually related.
+  // Coordinated palettes, including the new yellow and gold defaults.
   const palettes = [
-    ["#29262b", "#e9a9c7"],
+    ["#f0d169", "#eeb741"],
     ["#252c36", "#a9c7e8"],
     ["#34302d", "#e9c47a"],
     ["#33283d", "#c9b7e8"],
@@ -240,18 +242,20 @@ function surpriseMe() {
   colorOnePicker.value(selectedPalette[0]);
   colorTwoPicker.value(selectedPalette[1]);
 
+  // Generate a new random arrangement.
   variationSeed = floor(random(1, 1000000));
 
   redraw();
 }
 
 function resetSheet() {
-  // Restore the original settings and default palette.
+  // Restore the original parameters.
   bandsSlider.value(18);
   thicknessSlider.value(5);
   spreadSlider.value(88);
   layersSlider.value(5);
 
+  // Restore the new default yellow and gold colors.
   colorOnePicker.value("#f0d169");
   colorTwoPicker.value("#eeb741");
 
@@ -261,6 +265,6 @@ function resetSheet() {
 }
 
 function exportDesign() {
-  // Download the canvas artwork as a PNG file.
+  // Download the artwork as a PNG.
   saveCanvas("generative-pattern", "png");
 }
