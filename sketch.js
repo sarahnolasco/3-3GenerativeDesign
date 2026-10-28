@@ -252,8 +252,8 @@ function resetSheet() {
   spreadSlider.value(88);
   layersSlider.value(5);
 
-  colorOnePicker.value("#29262b");
-  colorTwoPicker.value("#e9a9c7");
+  colorOnePicker.value("#f0d169");
+  colorTwoPicker.value("#eeb741");
 
   variationSeed = 42;
 
