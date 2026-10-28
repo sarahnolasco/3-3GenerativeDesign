@@ -39,10 +39,10 @@ function setup() {
   layersSlider.id("layers-slider");
 
   // Color pickers control the two pattern colors.
-  colorOnePicker = createColorPicker("#29262b");
+  colorOnePicker = createColorPicker("#f0d169");
   colorOnePicker.parent("color-one-control");
 
-  colorTwoPicker = createColorPicker("#e9a9c7");
+  colorTwoPicker = createColorPicker("#eeb741");
   colorTwoPicker.parent("color-two-control");
 
   // Create the required p5.js buttons.
