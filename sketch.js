@@ -1,4 +1,3 @@
-
 let bandsSlider;
 let thicknessSlider;
 let spreadSlider;
