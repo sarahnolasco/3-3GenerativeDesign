@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generative Design</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
+  <script src="sketch.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <p class="eyebrow">3-3 GENERATIVE DESIGN</p>
+      <h1>Generative Design</h1>
+      <p class="subtitle">
+        A generative system for creating radial geometric designs.
+      </p>
+    </header>
+
+    <section class="generator">
+      <div id="canvas-holder" class="canvas-holder"></div>
+
+      <div class="controls">
+        <div class="control-row">
+          <label for="bands-slider">bands</label>
+          <div id="bands-control" class="slider-holder"></div>
+        </div>
+
+        <div class="control-row">
+          <label for="thickness-slider">thickness</label>
+          <div id="thickness-control" class="slider-holder"></div>
+        </div>
+
+        <div class="control-row">
+          <label for="spread-slider">spread</label>
+          <div id="spread-control" class="slider-holder"></div>
+        </div>
+
+        <div class="control-row">
+          <label for="layers-slider">layers</label>
+          <div id="layers-control" class="slider-holder"></div>
+        </div>
+
+        <div class="control-row color-row">
+          <label>color 1</label>
+          <div id="color-one-control" class="color-holder"></div>
+        </div>
+
+        <div class="control-row color-row">
+          <label>color 2</label>
+          <div id="color-two-control" class="color-holder"></div>
+        </div>
+
+        <div class="control-row surprise-row">
+          <div id="surprise-row"></div>
+        </div>
+
+        <div class="action-row" id="action-row"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>GENERATIVE SYSTEM / 001</span>
+      <span>Adjust the parameters to create a new variation.</span>
+    </footer>
+  </main>
+</body>
+</html>
